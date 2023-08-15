@@ -1,0 +1,108 @@
+<script>
+
+    function indexControllerCalcOperadoras(datosForm) {
+        event.preventDefault()
+
+        //Datos requeridos por el backend para gestionar la operadora
+        let datosOperadora = {
+
+        };
+
+        //Cerrado del modal y activacion de spiner de espera    
+        activarModal("false", "nuevaOperadoraModal");
+
+        //Si el boton de crear esta visible, procede con el codigo para crear un porcentaje
+
+        //Boton: Guardar nuevo
+        if (document.getElementById("guardarOperadoraBotonModal").hidden == false) {
+
+            datosOperadora.operadora = startsWithCapital(datosForm.inputNuevaOperadora.value)
+
+            datosOperadora.user = document.getElementById("imputInicioEmail").value;
+
+            activarModal("spiner", "Guardanto operadora...");
+            guardarOperadora(datosOperadora);
+
+            //Boton: Editar operadora
+        } else if (document.getElementById("editarOperadoraBotonModal").hidden == false) {
+
+            datosOperadora.idOperadora = getSelected("selectEditarOperadora", "value");
+
+            datosOperadora.operadora = getSelected("selectEditarOperadora", "text");
+
+            datosOperadora.user = document.getElementById("imputInicioEmail").value;
+
+            datosOperadora.status = getSelected("selectEstatusOperadora", "value");
+
+            switch (datosOperadora.status) {
+                case "true":
+                    datosOperadora.status = true
+                    break;
+
+                case "false":
+                    datosOperadora.status = false
+                    break;
+            }
+
+            activarModal("spiner", "Editando operadora...");
+            editarOperadora(datosOperadora);
+
+        } else if (document.getElementById("eliminarOperadoraBotonModal").hidden == false) {
+
+            datosOperadora.idOperadora = getSelected("selectEditarOperadora", "value");
+
+            activarModal("spiner", "Eliminando operadora...");
+            eliminarOperadora(datosOperadora.idOperadora)
+        }
+        console.log(datosOperadora.idOperadora)
+    }
+
+    function showControllerCalcOperadora(view) {
+        if (view == "inicio") {
+            activarModal("spiner", "Cargando operadoras...");
+            updateControllerCalcOperadoras("cargarOperadoras");
+            cargarTablaOperadoras();
+        } else {
+
+            activarModal("formulario", "nuevaOperadoraModal");
+            ocultarElementos("true", ".elementOperadorasModal");
+            disactivarElementos("true", "blockElementOperadorasModal");
+            limpiarForm("formOperadoras");
+
+            switch (view) {
+                case "nuevaOperadora":
+                    document.getElementById("LabelModalOperadora").innerHTML = "Nueva operadora"
+                    ocultarElementos("false", ".nuevaOperadora");
+                    disactivarElementos("false", "nuevaOperadora");
+                    break;
+                case "editarOperadora":
+                    console.log(document.getElementById("inputNuevaOperadora").disabled)
+                    document.getElementById("LabelModalOperadora").innerHTML = "Editar operadora"
+                    ocultarElementos("false", ".editarOperadora");
+                    disactivarElementos("false", "editarOperadora");
+                    break;
+                case "eliminarOperadora":
+                    document.getElementById("LabelModalOperadora").innerHTML = "Eliminar operadora"
+                    ocultarElementos("false", ".eliminarOperadora");
+                    disactivarElementos("false", "eliminarOperadora");
+                    break;
+            }
+        }
+    }
+
+    let statusOperadora
+    function updateControllerCalcOperadoras(action) {
+        switch (action) {
+            case "cargarOperadoras":
+                cargarOperdoras()
+                break;
+            case "traerEstatus":
+                cargarSelect("reiniciar")
+                document.getElementById("selectEstatusOperadora").disabled = true
+                traerEstatus(getSelected("selectEditarOperadora", "value"))
+                
+                break;
+        }
+    }
+
+</script>

@@ -1,0 +1,28 @@
+<script>
+//Gestion de esucha del nav  
+//Al tocar el logo:
+  document.getElementById("logo").addEventListener("click", 
+  function(e){
+    e.preventDefault();
+    if (document.getElementById("nombreUsuario").hidden== false){
+      mostrarContenido("home", "false");
+    }
+  });
+
+  function indexcontrollerNav(nav){
+    clickBoton("closeMenu");
+    switch (nav){
+      case "cambiarClave":
+        showControllerCambioClave("cambioClavePreguntas")
+        break;
+      case "cerrarSesion":
+        vistaActual= "sistematr"
+        activarModal("advertencia", "¿Esta seguro de cerrar sesión?")
+        break;
+      default:
+        mostrarContenido(nav);
+        break;      
+    }
+  };
+
+</script>

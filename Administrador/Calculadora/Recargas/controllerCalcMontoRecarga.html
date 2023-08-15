@@ -1,0 +1,50 @@
+<script>
+
+    function idexControllerCalcMontoRecargas() {
+        event.preventDefault()
+    }
+
+    function showControllerMontoRecarga(view) {
+        if (view == "inicio") {
+            activarModal("spiner", "Cargando monto recargas...");
+            updateControllerMontoRecarga("cargarOperadoras")
+            cargarTablaOperadoras()
+        } else {
+
+            activarModal("formulario", "modalMontoRecarga");
+            ocultarElementos("true", ".ocultarMontoRecarga");
+            disactivarElementos("true", "desactivarMontoRecarga");
+            limpiarForm("formOperadoras");
+
+            switch (view) {
+
+                case "nuevoMontoRecarga":
+                    document.getElementById("LabelModalMontoRecarga").innerHTML = "Nuevo monto de recarga"
+                    ocultarElementos("false", ".nuevoMontoRecarga");
+                    disactivarElementos("false", "nuevoMontoRecarga");
+                    break;
+
+                case "editarMontoRecarga":
+                    document.getElementById("LabelModalMontoRecarga").innerHTML = "Editar monto de recarga"
+                    ocultarElementos("false", ".editarMontoRecarga");
+                    disactivarElementos("false", "editarMontoRecarga");
+                    break;
+
+                case "eliminarMontoRecarga":
+                    document.getElementById("LabelModalMontoRecarga").innerHTML = "Eliminar monto de recarga"
+                    ocultarElementos("false", ".eliminarMontoRecarga");
+                    disactivarElementos("false", "eliminarMontoRecarga");
+                    break;
+            }
+        }
+    }
+
+    function updateControllerMontoRecarga(info) {
+        switch (info) {
+            case "cargarOperadoras":
+                cargarOperdoras()
+                break;
+        
+        }
+    }
+</script>

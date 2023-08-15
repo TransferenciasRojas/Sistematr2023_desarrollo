@@ -1,0 +1,131 @@
+<!-- Form: Calculadora -->
+<div class='viewsApp sesionApp calculadoraRecarga' id="calculadoraRecarga" hidden>
+    <div class="mx-auto">
+        <form form class="needs-validation mb-3" id="formCalculadoraCripto" onsubmit="indexControllerCalcuRecarga()">
+
+            <!-- Encabezado -->
+            <div class='row mb-2 text-center'>
+                <h3 class="mb-2">Calculadora de recargas</h3>
+            </div>
+
+            <!-- Origen -->
+            <div class="col-12 col-sm-5 mb-2 mx-auto">
+
+                <!-- Campo: Pais origen -->
+                <div class="mb-2">
+                    <div class='input-group'>
+                        <span class='input-group-text' id='basic-addon1'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'
+                                class='bi bi-map' viewBox='0 0 16 16'>
+                                <path fill-rule='evenodd'
+                                    d='M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z' />
+                                ";
+                            </svg>
+                        </span>
+                        <select class='form-select icon-menu desactElementCalcuRecarga'
+                            id="selectPaisOrigenCalcuRecarga" required>
+                            <option selected disabled value=''>Pais origen</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- Campo: Operadora -->
+                <div class="mb-2">
+                    <div class='input-group'>
+                        <span class='input-group-text' id='basic-addon1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg>
+                        </span>
+                        <select class='form-select icon-menu desactElementCalcuRecarga' id="selectOperadoraCalcuRecarga"
+                            required>
+                            <option selected disabled value=''>Operadora</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Campo: Monto recarga -->
+                <div class="mb-2">
+                    <div class='input-group'>
+                        <span class='input-group-text' id='basic-addon1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cash" viewBox="0 0 16 16">
+                                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                                <path
+                                    d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
+                            </svg>
+                        </span>
+                        <select class='form-select icon-menu desactElementCalcuRecarga' id="selectMontoCalcuRecarga"
+                            required>
+                            <option selected disabled value=''>Monto recarga</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- Campo: Porcentaje ganancia -->
+                <div class="mb-2">
+                    <div class='input-group'>
+                        <span class='input-group-text' id='basic-addon1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-percent" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                            </svg>
+                        </span>
+                        <input type='number' step="0.01" class='form-control elementCalculadora'
+                            id='inputPorcentajeCalcuRecarga' name="inputMonedaRecibir" placeholder='Porcentaje ganancia'
+                            onchange="updateElemntCalculadoraCripto('resetMonedaEnviar')">
+                    </div>
+                </div>
+
+                <!-- Campo: Monto a depositar -->
+                <div class="mb-4">
+                    <div class='input-group'>
+                        <span class='input-group-text' id='basic-addon1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cash" viewBox="0 0 16 16">
+                                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                                <path
+                                    d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
+                            </svg>
+                        </span>
+                        <input type='number' step="0.01" class='form-control elementCalcuCripto'
+                            id='inputMontoDepositarCalcuRecarga' name="inputMonedaEnviar"
+                            placeholder='Monto a depositar'
+                            onchange="updateElemntCalculadoraCripto('resetMonedaRecibir')">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spiner -->
+            <div id="spinerCalcuCripto" class="my-auto d-flex justify-content-center spinerCalcCripto">
+                <div class="spinner-border text-warning me-2 spinerCalcuCripto" role="status" hidden></div>
+                <strong class="spinerCalcuCripto" id="textSpinerTasa" hidden>Calculando...</strong>
+            </div>
+
+            <!-- calculo con tasa -->
+            <div class="mx-auto">
+                <div class="row text-center">
+                    <label class="fw-bold" id="etiquetaTasaCripto">Precio</label>
+                    <p>
+                        <span class="fw-bold" id="calcMontoEnviarCripto">0.00</span>
+                        <span class="" id="operadorCripto">X</span>
+                        <span class="fw-bold" id="calcTasaCripto">0.00</span>
+                        <span class="">=</span>
+                        <span class="fw-bold" id="calcMontoRecibirCripto">0.00</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Boton: calcular -->
+            <div class="row">
+                <button type="submit" class="btn btn-warning mx-auto col-11 col-sm-2 elementCalculadora"
+                    id="calculCriptoBoton">Calcular</button>
+            </div>
+        </form>
+    </div>
+</div>

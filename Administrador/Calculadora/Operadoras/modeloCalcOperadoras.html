@@ -1,0 +1,119 @@
+<script>
+    async function cargarOperdoras() {
+        var resultado = await google.script.run
+            .withSuccessHandler(cargarOperdorasTrue)
+            .withFailureHandler()
+            .getOperadora()
+    }
+
+    function cargarOperdorasTrue(operadoras){
+        cargarSelect("cargar", "selectEditarOperadora", operadoras, 0, 1);
+    }
+
+    async function traerEstatus(idOperadora) {
+        var resultado = await google.script.run
+            .withSuccessHandler(traerEstatusTrue)
+            .withFailureHandler()
+            .searchOperadora(idOperadora)
+    }
+
+    function traerEstatusTrue(respuesta){
+        statusOperadora = respuesta.statusOperadora
+        document.getElementById("selectEstatusOperadora").value = statusOperadora
+        document.getElementById("selectEstatusOperadora").disabled = false
+    }
+
+    async function cargarTablaOperadoras() {
+        var resul = await google.script.run
+            .withSuccessHandler(cargarTablaOperadorasTrue)
+            .withFailureHandler(cargarTablaOperadorasError)
+            .getOperadora();
+    }
+
+    function cargarTablaOperadorasTrue(dataArray) {
+
+        //activartable("true");
+        $(document).ready(function () {
+            $('#data-tableOperadoras').DataTable({
+
+                data: dataArray,
+                //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
+
+                columns: [
+                    { "title": "ID" },
+                    { "title": "Operadora" },
+                    { "title": "Estatus" },
+                ], stateSave: true,
+                "bDestroy": true,
+                responsive: true
+            });
+
+        });
+        activarModal("false");
+        ocultarElementos("false", ".calcOperadoras");
+    }
+
+    function cargarTablaOperadorasError(error) {
+        activarModal("respuestaNegativa", error)
+    }
+
+    async function guardarOperadora(datos) {
+        var resultado = await google.script.run
+            .withSuccessHandler(guardarOperadoraTrue)
+            .withFailureHandler(guardarOperadorafalse)
+            .insertOperadora(datos)
+    }
+
+    function guardarOperadoraTrue(respuesta){
+        
+        if (respuesta.status == true) {
+            activarModal("respuestaPositiva", "La operadora a sido registrada exitosamente")
+        } else if (respuesta.status == false) {
+            activarModal("respuestaNegativa", respuesta.mensaje);
+        }
+    }
+
+    function guardarOperadorafalse(error){
+        activarModal("respuestaNegativa", error);
+    }
+
+    async function editarOperadora(datos) {
+        var resultado = await google.script.run
+            .withSuccessHandler(editarOperadoraTrue)
+            .withFailureHandler(editarOperadorafalse)
+            .updateOperadora(datos)
+    }
+
+    function editarOperadoraTrue(respuesta) {
+        
+        if (respuesta.status == true) {
+            activarModal("respuestaPositiva", "La operadora a sido editada exitosamente")
+        } else if (respuesta.status == false) {
+            activarModal("respuestaNegativa", respuesta.mensaje);
+        }
+    }
+
+    function editarOperadorafalse(error) {
+        activarModal("respuestaNegativa", error);
+    }
+
+    async function eliminarOperadora(idOperadora) {
+        var resultado = await google.script.run
+            .withSuccessHandler(eliminarOperadoraTrue)
+            .withFailureHandler(eliminarOperadorafalse)
+            .deleteOperadora(idOperadora)
+    }
+
+    function eliminarOperadoraTrue(respuesta){
+        console.log(respuesta)
+        if (respuesta.status == true) {
+            activarModal("respuestaPositiva", "La operadora a sido eliminada exitosamente")
+        } else if (respuesta.status == false) {
+            activarModal("respuestaNegativa", respuesta.mensaje);
+        }
+    }
+
+    function eliminarOperadorafalse(error){
+        activarModal("respuestaNegativa", error);
+    }
+</script>

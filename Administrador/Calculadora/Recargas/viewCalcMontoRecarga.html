@@ -1,0 +1,128 @@
+<div class="viewsApp sesionApp calcRecargas" hidden>
+    <div class='row p-3'>
+        <div class='col-md-12 mb-2'>
+            <h3 class="mb-2">Configuracion de calculadora de recargas</h3>
+            <h4>Montos</h4>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class="mx-auto">
+            <div class='d-inline pe-2'>
+                <a id='nuevoMontoRecargaBoton' class='btn btn-warning mb-3 col-12 col-sm-3'
+                    onclick="showControllerMontoRecarga('nuevoMontoRecarga')">Nuevo</a>
+            </div>
+            <div class='d-inline pe-2'>
+                <a id='editarMontoRecargaBoton' class='btn btn-warning mb-3 col-12 col-sm-3'
+                    onclick="showControllerMontoRecarga('editarMontoRecarga')">Editar</a>
+            </div>
+            <div class='d-inline pe-2'>
+                <a id='eliminarMontoRecargaBoton' class='btn btn-warning mb-3 col-12 col-sm-3'
+                    onclick="showControllerMontoRecarga('eliminarMontoRecarga')">Eliminar </a>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------>
+    <!----Tabla---->
+    <!------------------------------------------------------------------------------------>
+    <div id="tablaMontoRecarga" class="row">
+        <div class="table-responsive mx-auto">
+            <table id="data-tableMontoRecarga" class="table table-hover"></table>
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------>
+    <!----Modal: Gestionar Monto de Recargas---->
+    <!------------------------------------------------------------------------------------>
+    <div class="modal fade" id="modalMontoRecarga" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LabelModalMontoRecarga">Gestionar Monto de Recargas</h5>
+                </div>
+                <form class="needs-validation" id="formOperadoras" onsubmit="indexControllerCalcOperadoras()">
+                    <div class="modal-body text-center">
+
+                        <!-- Campo: Operadoras-->
+                        <div class='mb-2 ocultarMontoRecarga nuevoMontoRecarga'>
+                            <div class='input-group'>
+                                <span class='input-group-text' id='basic-addon1'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                    </svg>
+                                </span>
+                                <select class='form-select icon-menu desactivarMontoRecarga nuevoMontoRecarga' name="selectOperadoras"
+                                    id="selectOperadoras" required>
+                                    <option selected disabled value='Estatus'>Operadoras</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Campo: ID -->
+                        <div class='mb-2 ocultarMontoRecarga editarMontoRecarga eliminarMontoRecarga'>
+                            <div class='input-group'>
+                                <span class='input-group-text' id='basic-addon1'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-key-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                    </svg>
+                                </span>
+                                <input type='number' class='form-control desactivarMontoRecarga editarMontoRecarga eliminarMontoRecarga' id='inputIDRecarga'
+                                    placeholder='ID' name="inputIDRecarga" required>
+                            </div>
+                        </div>
+
+                        <!-- Campo: Operadora (Editar) -->
+                        <div class='mb-2 ocultarMontoRecarga editarMontoRecarga eliminarMontoRecarga'>
+                            <div class='input-group'>
+                                <span class='input-group-text' id='basic-addon1'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                    </svg>
+                                </span>
+                                <input type='text' class='form-control desactivarMontoRecarga' id='inputOperadoraRecarga'
+                                    placeholder='Operadora' name="inputOperadoraRecarga" disabled>
+                            </div>
+                        </div>
+
+                        <!-- Campo: Monto recarga -->
+                        <div class='mb-2 ocultarMontoRecarga nuevoMontoRecarga editarMontoRecarga eliminarMontoRecarga'>
+                            <div class='input-group'>
+                                <span class='input-group-text' id='basic-addon1'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+                                        <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                                        <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+                                      </svg>
+                                </span>
+                                <input type='text' class='form-control desactivarMontoRecarga nuevoMontoRecarga editarMontoRecarga' id='inputMontoRecarga'
+                                    placeholder='Monto' name="inputMontoRecarga" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary mx-auto col-4" onclick=""
+                            data-bs-dismiss="modal">Cancelar</button>
+
+                        <button type="submit"
+                            class="btn btn-warning mx-auto ocultarMontoRecarga nuevoMontoRecarga col-4"
+                            id="guardarOperadoraBotonModal">Guardar</button>
+
+                        <button type="submit"
+                            class="btn btn-warning mx-auto ocultarMontoRecarga editarMontoRecarga col-4"
+                            id="editarOperadoraBotonModal">Editar</button>
+
+                        <button type="submit"
+                            class="btn btn-warning mx-auto ocultarMontoRecarga eliminarMontoRecarga col-4"
+                            id="eliminarOperadoraBotonModal">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
