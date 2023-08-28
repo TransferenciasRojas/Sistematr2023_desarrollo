@@ -8,10 +8,23 @@
 
   }
 
+  async function cargarAfiliadosFormN1(){
+    var resultado = await google.script.run
+      .withSuccessHandler(cargarListaAfiliadosFormN1)
+      .withFailureHandler( )
+      .getAfiliados()
+
+  }
+
   function cargarListaPaisesFormN1(listaPaises){
     cargarSelect("cargar","pais",listaPaises,0,1);
     cargarSelect("cargar","areaNivel1",listaPaises,4,4);
+    //console.log(listaPaises)
       
+  }
+
+  function cargarListaAfiliadosFormN1(listaAfiliados){
+    cargarSelect("cargar","afiliados",listaAfiliados,0,1);      
   }
 
   async function registrarNivel1(form){

@@ -76,20 +76,24 @@
     <div class='invalid-feedback'>Por favor colocar un número de teléfono válido</div>
   </div>
 
-  <!-- Campo: Email -->
-  <div class='col-md-5'>
+  <!-- Campo: Afiliado -->
+  <div class='col-sm-8 col-md-5'>
     <div class='input-group'>
       <span class='input-group-text' id='basic-addon1'>
-        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-envelope'
+        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-map'
           viewBox='0 0 16 16'>
-          <path
-            d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z' />
+          <path fill-rule='evenodd'
+            d='M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z' />
+          ";
         </svg>
       </span>
-      <input type='email' class='form-control' id='emailNivel1' placeholder='Email' name="email" required>
+      <select class='form-select icon-menu' name="afiliados" id="afiliados" required>
+        <option selected disabled value=''>Afiliado</option>
+      </select>
       <div class='valid-feedback'>Muy bien!</div>
-      <div class='invalid-feedback'>Por favor colocar un email válido</div>
+      <div class='invalid-feedback'>Por favor seleccionar un afiliado</div>
     </div>
+
   </div>
 
   <!-- Pregunta: Testigo de Jehova -->
@@ -108,43 +112,42 @@
 
     <div class='invalid-feedback'>Por favor indique si es Testigo de Jehová</div>
   </div>
-
-  <!-- Pregunta: Familiar -->
+ <!-- Pregunta: Afiliado -->
   <div class='col-sm-4'>
-
-    <label for='validationCustom06' class='form-label'>¿Es familiar?</label><br>
+    <label for='validationAfiliado' class='form-label'>¿Es Afiliado?</label><br>
 
     <div class='form-check'>
-      <input type='radio' class='form-check-input' id='familiarSiNivel1' name='radioFamiliar' value="si" required>
-      <label class='form-check-label' for='validationFormCheck4'>Si</label>
+      <input type='radio' class='form-check-input' id="AfiliadoSiCliente" name='radioAfiliado' value="si" required>
+      <label class='form-check-label' for='validationAfiliado'>Si</label>
     </div>
 
     <div class='form-check'>
-      <input type='radio' class='form-check-input' id='familiarNoNivel1' name='radioFamiliar' value="no" required>
-      <label class='form-check-label' for='validationFormCheck5'>No</label>
+      <input type='radio' class='form-check-input' id='AfiliadoNoCliente' name='radioAfiliado' value="no" required>
+      <label class='form-check-label' for='validationAfiliado'>No</label>
     </div>
 
-    <div class='invalid-feedback'>Por favor indique si es un familiar</div>
+    <div class='invalid-feedback'>Por favor indique si es Afiliado</div>
+  </div>
+
+  <!-- Pregunta: Representante -->
+  <div class='col-sm-4'>
+    <label for='validationRepresentate' class='form-label'>¿Es Representante?</label><br>
+
+    <div class='form-check'>
+      <input type='radio' class='form-check-input' id="RepresentateSiCliente" name='radioRepresentante' value="si" required>
+      <label class='form-check-label' for='validationRepresentate'>Si</label>
+    </div>
+
+    <div class='form-check'>
+      <input type='radio' class='form-check-input' id='RepresentateNoCliente' name='radioRepresentante' value="no" required>
+      <label class='form-check-label' for='validationRepresentate'>No</label>
+    </div>
+
+    <div class='invalid-feedback'>Por favor indique si es Representante</div>
   </div>
 
   <!-- Pregunta: Confiable -->
-  <div class='col-sm-4'>
 
-    <label for='validationCustom06' class='form-label'>¿Lo conoce personalmente?</label><br>
-
-    <div class='form-check'>
-      <input type='radio' class='form-check-input' id='confiableSiNivel1' name='radioConfiable' value="si" required>
-      <label class='form-check-label' for='validationFormCheck5'>Si</label>
-    </div>
-
-    <div class='form-check'>
-      <input type='radio' class='form-check-input' id='radioConfiableNivel1No' name='radioConfiable' value="no"
-        required>
-      <label class='form-check-label' for='radioConfiableNivel1No'>No</label>
-    </div>
-
-    <div class='invalid-feedback'>Por favor indique si es confiable</div>
-  </div>
 
   <!-- Terminos y condiciones -->
   <div class='form-check ms-3 mb-3'>

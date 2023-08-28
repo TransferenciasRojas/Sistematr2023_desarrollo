@@ -1,62 +1,21 @@
-/*function getData(email) {
+/**
+ * GetPaises: Devuelve un array con todos los paises activos
+ * Requisitos: No es necesario pasar pasametros.
+ * 
+ * Return:
+ * True = Retorna un array
+ * False = Retorna un NULL o un error de sistema.
+ * 
+ */
 
-console.log("user: "+email);
-  var dataClientes = sheetClienteN1.getRange("A2:J").getValues();
-  var clientes = [];
+function getPaises(){
+  let resultado = Bakendtr.getPaises();
 
-  for( var i in dataClientes){
-    if (dataClientes[i][9] == email){
-      
-      clientes.push(dataClientes[i]);
-      
-    }
-    
-  }
-
-  
-
- //Logger.log(clientes);
- //console.log(dataClientes);
- //Logger.log(dataClientes);
-  return clientes;
+ return resultado;
 }
 
-function getDataTodo() {
-  var dataClientes = sheetClienteN1.getRange("A2:J").getValues();
+function getAfiliados(){
+  let resultado = Bakendtr.getAfiliados();
 
-  //Logger.log(dataClientes);
-
-  return dataClientes;
+ return resultado;
 }
-
-
-function validarEmailCliente(email){
- 
-  var dataClientes = sheetClienteN1.getDataRange().getValues();
-
-for( var i in dataClientes){
- // Logger.log(dataClientes[i][4]);
-    if (dataClientes[i][4] == email){
-    
-        return false;
-    }
- 
-  }
-  return true;
-}
-
-function validarCelularCliente(cel){
- 
-  var dataClientes = sheetClienteN1.getDataRange().getValues();
-
-for( var i in dataClientes){
-
-    if (dataClientes[i][3] == cel){
-    
-        return false;
-    }
- 
-  }
-  return true;
-}
-*/
